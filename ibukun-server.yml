@@ -2,8 +2,8 @@ Description: >
     Ibukun Adegunloye {17/06/2022}
     This is my server template
     Contains a Launch Configuration which is attched to an Auto scaling group
-    Two Security Groups, one Load Balancer with a listerner and a listner rule.
-    ends with an Output for my Load Blancer DNS
+    Two Security Groups, one Load Balancer with a listener and a listner rule.
+    ends with an Output for my Load Balancer DNS
 
 Parameters:
 
@@ -60,15 +60,14 @@ Resources:
           apt-get install apache2 -y
           systemctl start apache2.service
           cd /var/www/html
-          echo "Udacity Demo Web Server Up and Running!" > index   
+          echo "Udacity Demo Web Server Up and Running!" > index.html   
 
       ImageId: ami-0729e439b6769d6ab 
-      KeyName: ibk-project
       SecurityGroups:
       - Ref: WebServerSecGroup
       InstanceType: t3.medium
       BlockDeviceMappings:
-      - DeviceName: "/dev/sdk"
+      - DeviceName: "/dev/sda1"
         Ebs:
           VolumeSize: '10'
 
